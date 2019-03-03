@@ -11,6 +11,7 @@
  */
 
 #include <QPainter>
+#include <QtMath>
 #include "MuShadowWidget.h"
 
 inline unsigned char MuMakeAlpha(int i, double f, int nSize)

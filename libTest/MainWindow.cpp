@@ -115,8 +115,10 @@ void MainWindow::onWarningBtnClicked()
 void MainWindow::initAreoWindow()
 {
     m_AeroWindow = new MuWinAeroShadowWindow;
-//    m_AeroWindow->setRubberBandOnMove(true);
-//    m_AeroWindow->setRubberBandOnResize(true);
+    //打开拖动窗体半透明
+    m_AeroWindow->setRubberBandOnMove(true);
+    //打开橡皮筋特效
+    m_AeroWindow->setRubberBandOnResize(true);
     m_AeroWindow->setWindowTitle(QStringLiteral("Test Aero Window"));
     m_AeroWindow->titleBar()->setObjectName("aeroTitleBar");
     QWidget *pClientWidget = new QWidget(m_AeroWindow);

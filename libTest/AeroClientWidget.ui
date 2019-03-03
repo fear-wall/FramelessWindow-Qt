@@ -15,9 +15,26 @@
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
+    <layout class="QVBoxLayout" name="verticalLayout"/>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>退出</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QGridLayout" name="gridLayout"/>
+   </item>
+   <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>This is a WinAeroWindow!</string>
+      <string/>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
