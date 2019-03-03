@@ -13,6 +13,7 @@
 #include <QLabel>
 #include <QDebug>
 #include "MainWindow.h"
+#include "FramelessWindow_Global.h"
 #include "ui_MainWindow.h"
 #include "ui_AeroClientWidget.h"
 
@@ -47,7 +48,7 @@ MainWindow::MainWindow(QWidget *parent)
                                  QPushButton::pressed { \
                                     background-color: gray; \
                                  }";
-    MuCustomMessageBox::setTitleStyleSheet(QStringLiteral("QLabel { color: black }"));
+    //MuCustomMessageBox::setTitleStyleSheet(QStringLiteral("QLabel { color: black }"));
     MuCustomMessageBox::setButtonStyleSheet(QDialogButtonBox::Ok, buttonStyle);
 
     connect(ui->dialogBtn, &QPushButton::clicked, this, &MainWindow::onDialogBtnClicked);
@@ -76,20 +77,36 @@ void MainWindow::onDialogBtnClicked()
     MuCustomDialog dialog;
     QLabel label("This is a Custom Dialog!");
     label.setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    dialog.titleBar()->setObjectName("dialogTitleBar");
     dialog.titleBar()->titleLabel()->setObjectName("dialogTitleLabel");
     dialog.setModal(true);
     dialog.setWindowTitle("dialog");
     dialog.setClientWidget(&label);
     dialog.exec();
 }
-
+/**
 void MainWindow::onInformationBtnClicked()
 {
-    MuCustomMessageBox::showInformation(nullptr,
+        MuCustomMessageBox::showInformation(nullptr,
                                         QStringLiteral("Information!"),
                                         QStringLiteral("This is a Information MessageBox!"));
 }
+**/
+void MainWindow::onInformationBtnClicked(){
+    MuCustomMessageBox showInformation;
 
+    QLabel label("This is a Custom Dialog!");
+    label.setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+
+    showInformation.titleBar()->setObjectName("informationTitleBar");
+    showInformation.titleBar()->titleLabel()->setObjectName("informationTitleLabel");
+    showInformation.setModal(true);
+    showInformation.setWindowTitle("提示信息");
+   // showInformation.setText("This is a Information MessageBox!");
+   showInformation.setClientWidget(&label);
+   showInformation.resize(300,200);
+    showInformation.exec();
+}
 void MainWindow::onErrorBtnClicked()
 {
     MuCustomMessageBox::showError(nullptr,
@@ -126,3 +143,9 @@ void MainWindow::initAreoWindow()
     m_AeroWindow->setClientWidget(pClientWidget);
 }
 #endif
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    MuCustomMessageBox::showInformation(nullptr,
+                                        QStringLiteral("Information!"),
+                                        QStringLiteral("This is a Information MessageBox!"));}

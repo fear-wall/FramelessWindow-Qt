@@ -36,6 +36,8 @@ private slots:
     void onSuccessBtnClicked();
     void onWarningBtnClicked();
 
+    void on_pushButton_2_clicked();
+
 private:
 #ifdef Q_OS_WIN32
     void initAreoWindow();

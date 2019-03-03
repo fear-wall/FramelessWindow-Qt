@@ -10,9 +10,12 @@
  *
  */
 
- /********** 无边框主窗体 **********/
+ /********** ？？？？？ **********/
  FramelessWindow#framelessWindow {
      background-color: #323232;
+ }
+ FramelessMessageBox#framelessMessagBox {
+     background-color: #ff0000;
  }
  /********************************/
 
@@ -44,7 +47,6 @@ QPushButton#maximizeButton[maximizeProperty=restore]:hover {
 QPushButton#maximizeButton[maximizeProperty=maximize]:hover {
     image: url(:/images/maxBtn32_White.png);
 }
-
 QPushButton#closeButton {
     border: none;
     image: url(:/images/closeBtn32_Gray.png);
@@ -54,34 +56,50 @@ QPushButton#closeButton:hover {
 }
 /*************************************************/
 
-/******* 自定义无边框提示框 *******/
-FramelessMessageBox#framelessMessagBox {
-    background-color: #404040;
+/******* 全局按键 *******/
+QPushButton:hover{
+     padding:0px;
 }
+QPushButton:hover{
+    color:#ffffff;
+    border:1px solid #D2E4FF;
+}
+/*************************************************/
+
+/******* Message提示信息 *******/
 QLabel#messageTextLabel {
     color: #5CAAFB;
-    font-family: "Microsoft Yahei";
-    font-size: 12pt;
+    font-size: 10pt;
 }
 QPushButton#yesButton {
     background-color: red;
 }
 /*************************************************/
 
-
-MuTitleBar#dialogTitleBar{
-    color: black;
-     background-color: #3385FF;
-    font-family: 'Microsoft Yahei';
+/******* 信息框标题栏*******/
+MuTitleBar#informationTitleBar {
+    background-color: #FF0033;
 }
+/********************************/
+/******* 信息框标题栏标题 *******/
+QLabel#informationTitleLabel {
+    color: #ffffff;
+    background-color: #FF3059;
+    font-size: 10pt;
+}
+/********************************/
+
+/******* 对话框标题栏*******/
+MuTitleBar#dialogTitleBar {
+    background-color: #3385FF;
+}
+/********************************/
+
 /******* 对话框标题栏标题 *******/
 QLabel#dialogTitleLabel {
-    color: black;
+    color: #ffffff;
      background-color: #3385FF;
     font-family: 'Microsoft Yahei';
-}
-FramelessDialog#framelessDialog {
-    background-color: #2E2E2E;
 }
 /********************************/
 
