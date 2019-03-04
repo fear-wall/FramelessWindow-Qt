@@ -26,17 +26,19 @@ class MainWindow : public MuCustomWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    int generateRandomNumber();
 
 private slots:
     void onDialogBtnClicked();
     void onInformationBtnClicked();
+    void onInformationBtnClicked1();
     void onErrorBtnClicked();
     void onSuccessBtnClicked();
     void onWarningBtnClicked();
-
     void on_pushButton_2_clicked();
+    void changeStyle();
 
 private:
 #ifdef Q_OS_WIN32

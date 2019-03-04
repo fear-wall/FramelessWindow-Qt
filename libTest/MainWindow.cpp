@@ -12,8 +12,13 @@
 
 #include <QLabel>
 #include <QDebug>
+#include <QFile>
+#include <QString>
+#include <QTime>
+#include <QRandomGenerator>
 #include "MainWindow.h"
 #include "FramelessWindow_Global.h"
+#include "changeskin.h"
 #include "ui_MainWindow.h"
 #include "ui_AeroClientWidget.h"
 
@@ -23,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
     , aeroUI(new Ui::AeroCLientWidget)
 {
     setWindowTitle("Test Custom Window");
-    resize(800, 600);
+    this->resize(800, 600);
 
     QWidget *pClientWidget = new QWidget(this);
     ui->setupUi(pClientWidget);
@@ -34,6 +39,13 @@ MainWindow::MainWindow(QWidget *parent)
     this->titleBar()->minimizeButton()->setObjectName("minimizeButton");
     this->titleBar()->maximizeButton()->setObjectName("maximizeButton");
     this->titleBar()->closeButton()->setObjectName("closeButton");
+
+    QPushButton *btn_changeSkin = new QPushButton();
+    btn_changeSkin->setParent(this);
+    btn_changeSkin->setText("换皮肤");
+    btn_changeSkin->move(100,60);
+    btn_changeSkin->resize(100,30);
+    connect(btn_changeSkin,SIGNAL(clicked()),  this, SLOT(changeStyle()));
 
     // 设置中心客户区域
     setClientWidget(pClientWidget);
@@ -71,6 +83,41 @@ MainWindow::~MainWindow()
     delete m_AeroWindow;
 #endif
 }
+/**
+ * @brief generateRandomNumber
+ * 获取随机数
+ */
+int  MainWindow::generateRandomNumber()
+{
+    QRandomGenerator(QTime(0,0,0).secsTo(QTime::currentTime()));
+    for(int i=0; i<5 ; i++)
+    {
+        int test =qrand()%5;
+        qDebug()<<test;
+        return test;
+    }
+}
+/**
+*换肤函数
+**/
+void MainWindow::changeStyle() {
+   QString skinName1 = ":/dark.qss";
+   QString skinName2 = ":/black.qss";
+   QString skinName3 = ":/white.qss";
+   QString skinName4 = ":/style.qss";
+
+   int i = generateRandomNumber();
+  // QString skinName =  QString("skinName%1").arg(i);
+   QString skinName =  skinName3;
+   qDebug()<<"----------------"<<skinName<<"-------------------";
+    changeskin::setStyle(skinName);
+}
+
+
+/**
+ ** @brief MainWindow::onDialogBtnClicked
+ ** @info 指定对话框样式
+**/
 
 void MainWindow::onDialogBtnClicked()
 {
@@ -84,14 +131,21 @@ void MainWindow::onDialogBtnClicked()
     dialog.setClientWidget(&label);
     dialog.exec();
 }
+
 /**
-void MainWindow::onInformationBtnClicked()
+ * @brief MainWindow::onInformationBtnClicked
+ * 简要方式弹出信息框
+ */
+void MainWindow::onInformationBtnClicked1()
 {
         MuCustomMessageBox::showInformation(nullptr,
                                         QStringLiteral("Information!"),
                                         QStringLiteral("This is a Information MessageBox!"));
 }
-**/
+/**
+ * @brief MainWindow::onInformationBtnClicked
+ * @指定样式表的信息框
+ */
 void MainWindow::onInformationBtnClicked(){
     MuCustomMessageBox showInformation;
 

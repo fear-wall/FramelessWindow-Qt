@@ -24,12 +24,14 @@ QT += widgets
 
 SOURCES += \
     main.cpp \
-    MainWindow.cpp
+    MainWindow.cpp \
+    changeskin.cpp
 
 HEADERS += \
     MainWindow.h \
     MainWindow.h \
-    StyleSheetHelper.h
+    StyleSheetHelper.h \
+    changeskin.h
 
 FORMS += \
     MainWindow.ui \
